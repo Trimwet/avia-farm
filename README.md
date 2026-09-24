@@ -55,7 +55,7 @@ MediQ is a modern admin dashboard for managing patient appointments, real-time q
 
 ```bash
 git clone https://github.com/Trimwet/MediQ.git
-cd MediQ/mediq-admin
+cd MediQ/avia-farm-admin
 npm install
 ```
 
@@ -78,7 +78,7 @@ npm run build
 ## Project Structure
 
 ```
-mediq-admin/
+avia-farm-admin/
 ├── public/images/          # Logo, favicons
 ├── src/
 │   ├── components/         # Reusable UI components

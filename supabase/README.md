@@ -61,12 +61,12 @@ cp .env.example .env
 
 **Never commit `.env` files.** They are gitignored.
 
-## Relationship to mediq-admin
+## Relationship to avia-farm-admin
 
-The admin dashboard (`mediq-admin/`) currently runs on mock repositories
-(`mediq-admin/src/data/mock/`). When this backend is ready, the mock
+The admin dashboard (`avia-farm-admin/`) currently runs on mock repositories
+(`avia-farm-admin/src/data/mock/`). When this backend is ready, the mock
 implementations will be swapped for Supabase-backed ones — the repository
-interfaces in `mediq-admin/src/data/repos.ts` remain unchanged.
+interfaces in `avia-farm-admin/src/data/repos.ts` remain unchanged.
 
 ## RPCs
 

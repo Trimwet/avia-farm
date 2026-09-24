@@ -1,0 +1,23 @@
+{
+  "name": "AVIA FARM — Field & Farm Operations",
+  "short_name": "AVIA FARM",
+  "description": "Field & farm operations: field visit requests, season calendar and a live work queue.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#FAF9F5",
+  "theme_color": "#D97757",
+  "icons": [
+    {
+      "src": "/images/avia-mark.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    },
+    {
+      "src": "/images/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "maskable"
+    }
+  ]
+}
