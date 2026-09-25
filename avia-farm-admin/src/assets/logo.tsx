@@ -8,7 +8,7 @@ export function Logo({ className, ...props }: React.ImgHTMLAttributes<HTMLImageE
 
   return (
     <img
-      src={isDark ? '/images/avia-logo-dark.svg' : '/images/avia-logo.svg'}
+      src={isDark ? '/images/avia-logo-dark.png' : '/images/avia-logo.png'}
       alt={BRAND.name}
       className={cn('h-10 w-auto object-contain', className)}
       {...props}
