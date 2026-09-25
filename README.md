@@ -1,8 +1,8 @@
 <div align="center">
 
-# MediQ
+# AVIA FARM
 
-**Appointment & Queue Management System for Hospitals and Clinics**
+**Field & Farm Operations — field visit requests, season calendar, live work queue**
 
 [![React](https://img.shields.io/badge/React-20232A?style=flat-square&logo=react&logoColor=61DAFB)](https://react.dev)
 [![TypeScript](https://img.shields.io/badge/TypeScript-3178C6?style=flat-square&logo=typescript&logoColor=white)](https://typescriptlang.org)
@@ -16,17 +16,18 @@
 
 ## Overview
 
-MediQ is a modern admin dashboard for managing patient appointments, real-time queue tracking, and clinic operations. Built for hospitals and clinics in Nigeria and beyond.
+AVIA FARM is a farm operations platform for managing field visit requests, a live work queue, and day-to-day farm activity. Built on the MediQ codebase, for farms and growers in Nigeria and beyond.
 
 ### Features
 
-- **Dashboard** — Real-time overview of appointments, queue status, and clinic activity
-- **Appointments** — Schedule, manage, and track patient appointments
-- **Queue Management** — Live queue updates with real-time subscriptions
-- **Patient Records** — Patient check-ins and visit history
-- **Doctor Scheduling** — Manage doctor availability and assignments
-- **Staff Management** — Staff roles and permissions
-- **Room Management** — Room allocation and availability tracking
+- **Dashboard** — Real-time overview of field visits, work queue status, and farm activity
+- **Field Visits** — Request, approve/reject, and manage the visit lifecycle (`pending → booked → arrived → in_progress → completed`)
+- **Work Queue** — Live queue: call next, start job, complete, mark left, with Supabase Realtime
+- **Growers, Agronomists & Crew** — Directories and status management
+- **Public Visit Requests** — Growers request without signup; the farm approves before check-in
+- **Grower Portal** — Own visits scoped by email, change password, sign out
+- **Multi-tenancy** — Farms + members, slug-based routing, create-farm flow
+- **Notifications** — In-app plus email reminders via Resend
 - **Dark Mode** — Full light/dark theme support
 
 ---
@@ -38,8 +39,8 @@ MediQ is a modern admin dashboard for managing patient appointments, real-time q
 | Frontend | React, TypeScript, Vite |
 | UI Components | shadcn/ui, Tailwind CSS |
 | Routing | TanStack Router |
-| State | TanStack Query |
-| Database | Supabase (PostgreSQL) |
+| State | TanStack Query, Zustand |
+| Database | Supabase (PostgreSQL, RLS, Realtime) |
 | Charts | Recharts |
 
 ---
@@ -54,9 +55,10 @@ MediQ is a modern admin dashboard for managing patient appointments, real-time q
 ### Installation
 
 ```bash
-git clone https://github.com/Trimwet/MediQ.git
-cd MediQ/avia-farm-admin
+git clone https://github.com/Trimwet/avia-farm.git
+cd avia-farm/avia-farm-admin
 npm install
+cp .env.example .env   # VITE_SUPABASE_URL, VITE_SUPABASE_ANON_KEY, VITE_GOOGLE_CLIENT_ID
 ```
 
 ### Development
@@ -65,7 +67,7 @@ npm install
 npm run dev
 ```
 
-Open [http://localhost:5173](http://localhost:5173)
+Open [http://127.0.0.1:3000](http://127.0.0.1:3000)
 
 ### Build
 
@@ -79,18 +81,19 @@ npm run build
 
 ```
 avia-farm-admin/
-├── public/images/          # Logo, favicons
+├── public/images/          # Logo, favicons, manifest
 ├── src/
 │   ├── components/         # Reusable UI components
 │   │   ├── layout/         # Sidebar, header, navigation
 │   │   └── ui/             # shadcn/ui components
+│   ├── config/             # brand.ts (single source of brand strings), rbac.ts
 │   ├── features/           # Feature modules
 │   │   ├── auth/           # Sign-in, sign-up, forgot password
 │   │   ├── dashboard/      # Dashboard with stats, charts, check-ins
 │   │   └── settings/       # Account settings
 │   ├── routes/             # TanStack Router file-based routes
 │   ├── styles/             # Theme variables, global CSS
-│   └── lib/                # Utilities, helpers
+│   └── lib/                # Utilities, Supabase client, storage migration
 └── package.json
 ```
 
@@ -100,10 +103,10 @@ avia-farm-admin/
 
 | Role | Access |
 |------|--------|
-| Hospital Admin | Full dashboard access |
-| Front Desk | Check-ins, queue management |
-| Doctor | Patient queue, appointments |
-| Patient | Book appointments, view queue |
+| Farm Admin | Full dashboard access |
+| Front Desk | Check-ins, work queue management |
+| Agronomist | Work queue, field visits |
+| Grower | Request visits, view own schedule |
 
 ---
 

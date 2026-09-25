@@ -39,7 +39,7 @@ function buildHtml(type: string, patientName: string, doctorName: string, timeSt
         <p>This is a reminder that you have an appointment <strong>tomorrow</strong> at <strong>${timeStr}</strong> with <strong>Dr. ${doctorName}</strong>.</p>
         <p>Please arrive 10 minutes early. If you need to reschedule, contact the clinic as soon as possible.</p>
         <hr style="border: none; border-top: 1px solid #eee; margin: 24px 0;" />
-        <p style="font-size: 12px; color: #888;">This reminder was sent by MediQ.</p>
+        <p style="font-size: 12px; color: #888;">This reminder was sent by AVIA FARM.</p>
       </div>`
   }
   return `
@@ -49,7 +49,7 @@ function buildHtml(type: string, patientName: string, doctorName: string, timeSt
       <p>This is a reminder that your appointment with <strong>Dr. ${doctorName}</strong> is in <strong>2 hours</strong> (at <strong>${timeStr}</strong>).</p>
       <p>Please arrive 10 minutes early. If you need to reschedule, contact the clinic as soon as possible.</p>
       <hr style="border: none; border-top: 1px solid #eee; margin: 24px 0;" />
-      <p style="font-size: 12px; color: #888;">This reminder was sent by MediQ.</p>
+      <p style="font-size: 12px; color: #888;">This reminder was sent by AVIA FARM.</p>
     </div>`
 }
 
@@ -64,7 +64,7 @@ serve(async (req) => {
     const supabaseUrl = Deno.env.get("SUPABASE_URL")
     const supabaseServiceKey = Deno.env.get("SUPABASE_SERVICE_ROLE_KEY")
     const resendApiKey = Deno.env.get("RESEND_API_KEY")
-    const fromEmail = Deno.env.get("FROM_EMAIL") || "MediQ <noreply@medique.app>"
+    const fromEmail = Deno.env.get("FROM_EMAIL") || "AVIA FARM <noreply@aviafarm.ng>"
 
     if (!supabaseUrl || !supabaseServiceKey || !resendApiKey) {
       throw new Error("Missing required env: SUPABASE_URL, SUPABASE_SERVICE_ROLE_KEY, RESEND_API_KEY")

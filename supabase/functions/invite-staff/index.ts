@@ -2,7 +2,7 @@ import { serve } from "https://deno.land/std@0.177.0/http/server.ts"
 import { createClient } from "https://esm.sh/@supabase/supabase-js@2.39.3"
 
 function getCorsHeaders(req: Request): Record<string, string> {
-  const raw = Deno.env.get("ALLOWED_ORIGINS") ?? "https://getmediq.vercel.app,http://localhost:3000,http://127.0.0.1:3000"
+  const raw = Deno.env.get("ALLOWED_ORIGINS") ?? "https://avia-farm.vercel.app,http://localhost:3000,http://127.0.0.1:3000"
   const allowedOrigins = raw.split(",").map((s) => s.trim()).filter(Boolean)
   const origin = req.headers.get("Origin") ?? ""
   const allowOrigin = allowedOrigins.includes(origin) ? origin : allowedOrigins[0]
@@ -146,7 +146,7 @@ serve(async (req) => {
     }
 
     // 6. Invite the user — creates the auth.users row AND sends the invite email.
-    const frontendUrl = Deno.env.get("FRONTEND_URL") ?? "https://getmediq.vercel.app"
+    const frontendUrl = Deno.env.get("FRONTEND_URL") ?? "https://avia-farm.vercel.app"
     const { data: inviteData, error: inviteError } = await supabaseAdmin.auth.admin.inviteUserByEmail(
       email.toLowerCase(),
       {
